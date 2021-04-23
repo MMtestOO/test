@@ -29,15 +29,12 @@ public class Cart {
 	generator ="MEMBER_NO_SEQ_GENERATOR")
 	// GenerationType은 Auto가 기본, 자동으로 해줌. 성능은 시퀀스가 가장 좋지만 많은 건을 처리 하고
 	// 자동증가 기본값으로 id 설정 시 IDENTITY가 적절함 
-	@NonNull
 	@Column(name="cart_count")
 	private BigDecimal cartCount;
 	
-	@NonNull
 	@Column(name="mem_count")
 	private BigDecimal memCount;
 	
-	@NonNull
 	@Column(name="movie_code")
 	private BigDecimal movieCode;
 	

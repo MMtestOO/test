@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.proto.mm.model.Member;
+
 @Service
 public class MainService {
 	
@@ -19,6 +21,8 @@ public class MainService {
 			if(session.getAttribute("member") != null) {
 				// 세션에 member 속성이 있으면 'logined' 속성을 추가
 				model.addAttribute("logined", "logined");
+				Member member = (Member) session.getAttribute("member");
+				model.addAttribute(member);
 			}else {
 			}
 		}catch(NullPointerException e) {

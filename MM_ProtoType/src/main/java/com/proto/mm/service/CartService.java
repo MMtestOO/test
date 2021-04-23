@@ -27,11 +27,7 @@ public class CartService {
 	
 	@Autowired
 	private MovieRepository movieRepository;
-	
-	public void cartInsert(Cart c) {
-		cartRepository.save(c);
-	}
-	
+
 	public Model showCartList(Model model,
 			HttpServletRequest request, HttpServletResponse response) {
 		
@@ -41,6 +37,7 @@ public class CartService {
 		
 		// 세션이 있으면 가져오고 없더라도 생성하지 않음
 		HttpSession session = request.getSession(false);
+		
 		try {
 			// 세션에 로그인 된 멤버의 memCount 가져오기
 			Member member = (Member) session.getAttribute("member");
@@ -95,6 +92,16 @@ public class CartService {
 		Cart cart = new Cart(cartCount, memCount, movieCode);
 		
 		cartRepository.save(cart);
+	}
+	
+	public Cart cartCheck(HttpServletRequest request,
+			HttpServletResponse response) {
+		String movie_title = request.getParameter("movieTitle");
+		Movie movie = movieRepository.findByMovieTitle(movie_title);
+		BigDecimal movieCode = movie.getMovieCode();
+		
+		return cartRepository.findByMovieCode(movieCode);
+		
 	}
 
 	public void cartDelete(Cart c) {

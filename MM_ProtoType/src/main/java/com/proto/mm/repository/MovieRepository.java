@@ -16,5 +16,6 @@ public interface MovieRepository extends JpaRepository<Movie, BigDecimal>{
 	
 	public Movie findByMovieCode(BigDecimal movieCode);
 	
-
+	public List<Movie> findByMovieTitleContains(String movieTitle, Sort sort);
+	
 }

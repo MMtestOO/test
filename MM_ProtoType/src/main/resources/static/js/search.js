@@ -3,21 +3,14 @@ $(document).ready(function(){
 	$("#searchBtn").click(function(){
 		
 		var movieTitle=$("#movieTitle").val();
-		if (movieTitle == null){
-			$.post("movieList",
-			{			   
-				
-			}	
-		);
+		if (movieTitle == ""){
+			$.get("movieList",{
+				});
 		}
 		else {
-			$.post("movieSearch",
-			{			   
-				movieTitle:movieTitle
-			}	
-		);
+			$.get("moiveSearch",{
+					movieTitle : movieTitle,
+			});
 		}
-		
-	alert(movieTitle);
 	});
 });

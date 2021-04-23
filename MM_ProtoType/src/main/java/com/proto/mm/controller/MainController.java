@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,16 +37,15 @@ public class MainController{
 		return "index";
 	}
 	
-	/*
 	@GetMapping("home")
-	public String home(Model model,HttpServletRequest request,
+	public String movie(Model model,HttpServletRequest request,
 			HttpServletResponse response) {
 		// 세션을 체크해서 로그인 상태인지 확인
 		mainService.signInCheck(model, request, response);
-	 
+
 		return "home";
-	}*/
-	
+	}
+
 	// Sign in
 	@RequestMapping(value = "signIn", 
 					method= {RequestMethod.POST},

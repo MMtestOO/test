@@ -40,6 +40,7 @@ $(document).ready(function(){
 // 로그아웃
 $(document).ready(function(){ 
 	$("#signOutBtn").click(function(){
+	if (confirm('로그아웃 하시겠습니까?')){
 	$.post("signOut",
 		{
 		   
@@ -50,6 +51,7 @@ $(document).ready(function(){
 			location.href = "/";	
 			}		   
 		);
+		}
 	});
 });
 
@@ -166,15 +168,15 @@ $(document).ready(function(){
 						pw:pw,
 						prefer:prefer_arr
 					},
-				success : function(data){
-					if(data != "아이디가 중복입니다."){
-					alert(data);
-					opener.parent.location.reload();
-					window.close();
-					}else{
-						alert("아이디가 중복입니다.");
-						
-					}
+					success : function(data){
+						if(data != "아이디가 중복입니다."){
+						alert(data);
+						opener.parent.location.reload();
+						window.close();
+						}else{
+							alert("아이디가 중복입니다.");
+							
+						}
 					}
 				});
 			}
