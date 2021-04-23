@@ -32,6 +32,7 @@ public class MovieController {
 			HttpServletResponse response) {
 		// 세션을 체크해서 로그인 상태인지 확인
 		mainService.signInCheck(model, request, response);
+		movieService.showMovieList(model);
 		return "home";
 	}
 	
