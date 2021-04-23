@@ -68,6 +68,9 @@
 			                <h4 class="card-title">
 			                  <p th:text="${movie.movieTitle}" class="movieTitle"></p>
 			                </h4>
+			                <p th:text="${movie.movieGenre}"></p>
+			                <p th:text="${movie.movieRdate}"></p>
+			                현재 평점:<p th:text="${movie.movieRating}"></p>
 			                <p th:text="${movie.moviePrice}"></p>
 					                <form method="get" action="movieDetail">
 						                <input type="hidden" name="movieTitle" th:value="${movie.movieTitle}">
@@ -115,7 +118,7 @@
 					                  <p th:text="${movie.movieTitle}" class="movieTitle"></p>
 					                </h4>
 					                <p th:text="${movie.moviePrice}"></p>
-					                	<form method="get" action="moiveOrder">
+					                	<form method="get" action="movieOrder">
 							                <input type="hidden" name="movieTitle" th:value="${movie.movieTitle}">
 							                <button type="submit">구매</button>
 						                </form>

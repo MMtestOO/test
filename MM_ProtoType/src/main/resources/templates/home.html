@@ -13,11 +13,9 @@
 		<div id="chat_section" th:replace="fragments/section :: chat_section">
 			<p>(리스폰스를 사용자와 챗봇으로 구분하여 If문과 Each문을 이용해 뿌려줍니다.)</p>
 		</div>
-<<<<<<< HEAD
-		<div id="result_section" th:replace="fragments/section :: movie_section">
-=======
+		
 		<div id="result_section" th:unless="${searched}" th:replace="fragments/section :: movie_section">
->>>>>>> upstream/develop
+
 			<p>(영화 조회 결과를 Each문으로 뿌려줍니다.)</p>
 		</div>
 		<div id="result_section" th:if="${detail}" th:replace="fragments/section :: movieDetail_section">
