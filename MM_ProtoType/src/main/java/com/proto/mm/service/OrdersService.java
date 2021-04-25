@@ -58,10 +58,10 @@ public class OrdersService {
 			model.addAttribute("movies", orderMovies);
 
 			
-			for(int i=0;i<orders.size();i++) {
+			/*for(int i=0;i<orders.size();i++) {
 				System.out.println(orders.get(i).toString());
 				System.out.println(orderMovies.get(i).toString());
-			}
+			}*/
 		}		
 		
 		return model;

@@ -16,6 +16,8 @@ import com.proto.mm.model.Cart;
 import com.proto.mm.model.Movie;
 import com.proto.mm.service.CartService;
 import com.proto.mm.service.MainService;
+import com.proto.mm.service.MovieService;
+import com.proto.mm.service.OrdersService;
 
 @Controller
 public class CartController {
@@ -25,6 +27,12 @@ public class CartController {
 	
 	@Autowired
 	CartService cartService;
+	
+	@Autowired
+	MovieService movieService;
+	
+	@Autowired
+	OrdersService orderService;
 	
 
 	@GetMapping("cart")
@@ -43,8 +51,9 @@ public class CartController {
 	public String cartInsert(Model model,HttpServletRequest request,
 			HttpServletResponse response) {
 			try {
-				
-				if(cartService.cartCheck(request, response) == null) {
+				if (orderService.orderCheck(request, response) != null) {
+					return "이미 구매한 영화 입니다.";
+				}else if(cartService.cartCheck(request, response) == null) {
 				cartService.cartInsert(request, response);
 				String movieTitle = request.getParameter("movieTitle");
 				
@@ -75,6 +84,19 @@ public class CartController {
 		}
 		
 		
+	}
+	
+	@RequestMapping(value = "cartMovieDetail", 
+			method= {RequestMethod.GET})
+	public String showCartMovieDetail(Model model, HttpServletRequest request,
+							  HttpServletResponse response) {
+		String movieTitle=request.getParameter("movieTitle");
+
+		mainService.signInCheck(model, request, response);
+		movieService.showMovieDetail(model, movieTitle);
+		System.out.println("영화 자세히 보기 정보 : "+model+"\n"+movieTitle);
+		
+		return "cartMovieDetail";
 	}
 	
 }

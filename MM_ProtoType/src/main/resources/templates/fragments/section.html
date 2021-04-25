@@ -119,20 +119,14 @@
 					                <h4 class="card-title">
 					                  <p th:text="${movie.movieTitle}" class="movieTitle"></p>
 					                </h4>
-					                <p th:text="${movie.moviePrice}"></p>
-
-					                	<form method="get" action="movieOrder">
-							                <input type="hidden" name="movieTitle" th:value="${movie.movieTitle}">
-							                <button type="submit">구매</button>
-						                </form>
-						                	<br>
-						                <form method="get" action="movieDetail">
-							                <input type="hidden" name="movieTitle" th:value="${movie.movieTitle}">
-							                <button type="submit">자세히 보기</button>
-						                </form>
-						                	<br>
-						                <div><button class="" th:classappend="${movieStat.index}" name="cartDeleteBtn">삭제</button></div>
-					                		<br>	
+					                <p th:text="${#numbers.formatCurrency(movie.moviePrice)}"></p>
+					                	
+										<button class="btn btn-secondary my-2 my-sm-0" th:attrappend="id=${movieStat.index}" name="movieOrderBtn">구매</button>
+										&nbsp;&nbsp;
+						                <button class="btn btn-secondary my-2 my-sm-0" th:attrappend="id=${movieStat.index}" name="cartDeleteBtn">삭제</button>
+					                		<br><br>
+					                	<div><button class="btn btn-secondary my-2 my-sm-0" th:attrappend="id=${movieStat.index}" name="movieDetailBtn">자세히 보기</button></div>
+						                	<br>	
 
 					              </div>
 					            </div>
