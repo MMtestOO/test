@@ -1,5 +1,8 @@
 package com.proto.mm.controller;
 
+import java.math.BigDecimal;
+import java.util.Arrays;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -42,6 +45,7 @@ public class MainController{
 			HttpServletResponse response) {
 		// 세션을 체크해서 로그인 상태인지 확인
 		mainService.signInCheck(model, request, response);
+		mainService.showSelectedGenre(model, request, response);
 
 		return "home";
 	}

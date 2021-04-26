@@ -96,11 +96,16 @@ public class CartService {
 	
 	public Cart cartCheck(HttpServletRequest request,
 			HttpServletResponse response) {
+		HttpSession session = request.getSession(false);
+		Member member = (Member) session.getAttribute("member");
+		BigDecimal memCount = member.getMemCount();
+
 		String movie_title = request.getParameter("movieTitle");
 		Movie movie = movieRepository.findByMovieTitle(movie_title);
 		BigDecimal movieCode = movie.getMovieCode();
 		
-		return cartRepository.findByMovieCode(movieCode);
+		return cartRepository.findByMovieCodeAndMemCount(memCount, movieCode);
+
 		
 	}
 
@@ -111,10 +116,15 @@ public class CartService {
 
 	public Cart findCartMovie(HttpServletRequest request, HttpServletResponse response) {
 		 System.out.println("영화 찾기 서비스 호출");
+		 HttpSession session = request.getSession(false);
+		 Member member = (Member) session.getAttribute("member");
+		 BigDecimal memCount = member.getMemCount();
+		 
 		 String movieTitle=request.getParameter("movieTitle");
 		 Movie movie=movieRepository.findByMovieTitle(movieTitle);
 		 BigDecimal movieCode = movie.getMovieCode();
-		 Cart cart = cartRepository.findByMovieCode(movieCode);
+		 Cart cart = cartRepository.findByMovieCodeAndMemCount(movieCode, memCount);
+
 		return cart;
 	}
 

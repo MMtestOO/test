@@ -22,6 +22,29 @@ body {
     
 }
 
+div.card-body{
+	height:180px;
+}
+
+div.card-body-cart{
+	height:200px;
+}
+
+div.card-body-detail{
+	height:650px;
+	width: 300px;
+}
+
+div.col-md-6-detail {
+    width: 100%;
+}
+
+div.col-lg-4-detail{
+	padding-left: 15px;
+	padding-right: 15px;
+	max-width: 100%;
+}
+
 html{
     height: 100vh;
 }

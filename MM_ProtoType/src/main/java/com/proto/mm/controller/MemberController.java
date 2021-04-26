@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.proto.mm.model.Member;
 import com.proto.mm.service.MainService;
 import com.proto.mm.service.MemberService;
+import com.proto.mm.service.OrdersService;
 
 @Controller
 public class MemberController {
@@ -31,6 +32,9 @@ public class MemberController {
 	
 	@Autowired
 	MainService mainService;
+	
+	@Autowired
+	OrdersService orderService;
 	
 	
 	@GetMapping("memberInsertForm")
@@ -85,6 +89,7 @@ public class MemberController {
 		HttpSession session=request.getSession();
 		memberService.showMemberInfo(model,session);
 		// orderService에서 정보 가져오기
+		orderService.showOrderList(model, request, response);
 		
 		return "memberInfo";
 	}
