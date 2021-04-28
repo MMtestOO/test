@@ -76,9 +76,6 @@
 	                 <li class="nav-item" th:classappend="${menu} == 'cart'? 'active'">
 	                    <a class="nav-link" href="#" th:href="@{/cart}">장바구니 <span class="sr-only" th:if="${menu} == 'cart'">(current)</span></a>
 	                </li>
-	                <li class="nav-item" th:classappend="${menu} == 'orderList'? 'active'">
-	                    <a class="nav-link" href="#" th:href="@{/orderList}">구매 이력 <span class="sr-only" th:if="${menu} == 'orderList'">(current)</span></a>
-	                </li>
 	            </ul>
 	
 	        </div>

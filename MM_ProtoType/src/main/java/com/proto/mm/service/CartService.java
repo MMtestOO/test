@@ -27,7 +27,10 @@ public class CartService {
 	
 	@Autowired
 	private MovieRepository movieRepository;
-
+	
+	@Autowired
+	private PosterService posterService;
+	
 	public Model showCartList(Model model,
 			HttpServletRequest request, HttpServletResponse response) {
 		
@@ -37,7 +40,7 @@ public class CartService {
 		
 		// 세션이 있으면 가져오고 없더라도 생성하지 않음
 		HttpSession session = request.getSession(false);
-		
+		 
 		try {
 			// 세션에 로그인 된 멤버의 memCount 가져오기
 			Member member = (Member) session.getAttribute("member");
@@ -57,6 +60,7 @@ public class CartService {
 			model.addAttribute("movies", cartMovies);
 			System.out.println("카트 내 영화 목록 가져오기 성공");
 			
+			posterService.showPosterResult(model);
 		
 
 		}catch(NullPointerException e) {

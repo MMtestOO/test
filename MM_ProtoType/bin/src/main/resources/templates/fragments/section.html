@@ -1,8 +1,5 @@
 <head>
 <!-- <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
-<style type="text/css">
-
-</style>
 </head>
 <body>
     <section>
@@ -55,28 +52,91 @@
 		
 			</div>
 			
-			
-			<div id="result_section" th:fragment="result_section">
-			    <!-- <h1>Movie Mentor</h1>
+			<div id="home_section" th:fragment="home_section">
+				<h1>Movie Mentor</h1>
 			    <p class="lead">영화 취향의 길라잡이<br> 
-			        무비멘토 화이팅</p> -->
-    			<div id="movie_main_title"> User님의 취향저격 영화</div>
-    			
+			        무비멘토 화이팅</p>
+			</div>
+			
+			<div id="movie_section" th:fragment="movie_section">
+			   
+    			<div align="center" id="movie_main_title" th:text="${member.name} + '님의 취향저격 영화'"> User님의 취향저격 영화</div>
 				<span th:each="movie : ${movies}">
 			          <div class="col-lg-4 col-md-6 mb-4">
-			            <div class="card h-100">
+			            <div align="center" class="card h-100">
 			              <div class="card-body">
 			                <h4 class="card-title">
-			                  <p th:text="${movie.movieTitle}"></p>
+			                  <p th:text="${movie.movieTitle}" class="movieTitle"></p>
 			                </h4>
 			                <p th:text="${movie.moviePrice}"></p>
-			                <button>자세히 보기</button>&nbsp;&nbsp;&nbsp;&nbsp;<button>담기</button>
-			                <br>
+					                <form method="get" action="movieDetail">
+						                <input type="hidden" name="movieTitle" th:value="${movie.movieTitle}">
+						                <button type="submit" name="movieDetailBtn">자세히 보기</button>
+					                </form>
+					                	<br>
+						           <div> <button class="" th:classappend="${movieStat.index}" name="cartInsertBtn">담기</button></div>
+						            	<br>
+				                <br>
 			              </div>
-			            </div>
-			            </div>
+		            	</div>
+		            </div>
 				</span>
 			</div>
+			
+			<div id="movieDetail_section" th:fragment="movieDetail_section">
+			          <div align="center" class="col-lg-4-detail col-md-6-detail mb-4">
+			          <div th:if="${movie!=null}">
+			            <div align="center" class="card h-100-detail">
+			              <!-- <div class="card-body-detail"> -->
+			                <h4 class="card-title">
+			                  <p th:text="${movie.movieTitle}" class="movieTitle"></p>
+			                </h4>
+			               	<p th:text="${movie.movieRating}"></p>
+			                <p th:text="${movie.movieGenre}"></p>
+			                <p th:text="${movie.movieDirector}"></p>
+			                <p th:text="${movie.movieActor}"></p>
+			                <p th:text="${movie.movieRdate}"></p>
+			                <p th:text="${movie.movieRtime}"></p>
+			                <p th:text="${movie.moviePrice}"></p>
+			                <p th:text="${movie.movieStory}"></p>
+			                <div><button class="0" name="cartInsertBtn">담기</button></div>
+				                <br>
+			                <div><input type="button" value="이전 페이지" onClick="history.go(-1)"> </div>
+			              	    <br>	
+			              <!-- </div> -->
+			            </div>
+		            </div>
+	            </div>
+			</div>
+			
+			<div  id="result_section" th:fragment="cart_section">
+	    			<div align="center" id="movie_main_title" th:text="${member.name} + '님의 장바구니'"> User님의 장바구니</div>
+	    			<div th:if="${movies != null}">
+						<span th:each="movie : ${movies}">
+					          <div class="col-lg-4 col-md-6 mb-4">
+					            <div align="center" class="card h-100">
+					              <div class="card-body-cart">
+					                <h4 class="card-title">
+					                  <p th:text="${movie.movieTitle}" class="movieTitle"></p>
+					                </h4>
+					                <p th:text="${#numbers.formatCurrency(movie.moviePrice)}"></p>
+					                	
+										<button class="btn btn-secondary my-2 my-sm-0" th:attrappend="id=${movieStat.index}" name="movieOrderBtn">구매</button>
+										&nbsp;&nbsp;
+						                <button class="btn btn-secondary my-2 my-sm-0" th:attrappend="id=${movieStat.index}" name="cartDeleteBtn">삭제</button>
+					                		<br><br>
+					                	<div><button class="btn btn-secondary my-2 my-sm-0" th:attrappend="id=${movieStat.index}" name="movieDetailBtn">자세히 보기</button></div>
+						                	<br>	
+
+					              </div>
+					            </div>
+					            </div>
+						</span>
+					</div>
+			</div>
+			
+			
+			
 			
 		</article>
 	</section>

@@ -61,19 +61,27 @@
 			<div id="movie_section" th:fragment="movie_section">
 			   
     			<div align="center" id="movie_main_title" th:text="${member.name} + '님의 취향저격 영화'"> User님의 취향저격 영화</div>
-				<span th:each="movie : ${movies}">
+				<span th:each="movie : ${movies}">	
+               			
 			          <div class="col-lg-4 col-md-6 mb-4">
 			            <div align="center" class="card h-100">
 			              <div class="card-body">
 			                <h4 class="card-title">
 			                  <p th:text="${movie.movieTitle}" class="movieTitle"></p>
+
 			                </h4>
 			                <p th:text="${movie.movieGenre}"></p>
 			                <p th:text="${movie.movieRating}"></p>
+
+			                   </h4>
+			                <span th:each="poster : ${posters}">
+			                  	<img th:if="${movie.movieCode == poster.movieCode}" id="poster" th:alt="${movie.movieTitle}+' 포스터'" th:src="'/poster/' + ${poster.posterPath} + '/'"  width="25" height="25%"/>
+			                </span>
+			               
 			                <p th:text="${movie.moviePrice}"></p>
 					                <form method="get" action="movieDetail">
 						                <input type="hidden" name="movieTitle" th:value="${movie.movieTitle}">
-						                <button type="submit" name="movieDetailBtn">자세히 보기</button>
+						                <button class="" type="submit" name="movieDetailBtn">자세히 보기</button>
 					                </form>
 					                	<br>
 						           <div> <button class="" th:classappend="${movieStat.index}" name="cartInsertBtn">담기</button></div>
@@ -82,6 +90,7 @@
 			              </div>
 		            	</div>
 		            </div>
+		            
 				</span>
 			</div>
 			
@@ -93,14 +102,16 @@
 			                <h4 class="card-title">
 			                  <p th:text="${movie.movieTitle}" class="movieTitle"></p>
 			                </h4>
-			               	<p th:text="${movie.movieRating}"></p>
-			                <p th:text="${movie.movieGenre}"></p>
-			                <p th:text="${movie.movieDirector}"></p>
-			                <p th:text="${movie.movieActor}"></p>
-			                <p th:text="${movie.movieRdate}"></p>
-			                <p th:text="${movie.movieRtime}"></p>
-			                <p th:text="${movie.moviePrice}"></p>
-			                <p th:text="${movie.movieStory}"></p>
+			                <img id="poster" th:alt="${movie.movieTitle}+' 포스터'" th:src="'/poster/' + ${filePath} + '/'"  width="25" height="25%"/>
+			               	
+			               	<p th:text="'별점 : ' + ${movie.movieRating}"></p>
+			                <p th:text="'장르 : ' + ${movie.movieGenre}"></p>
+			                <p th:text="'감독 : ' + ${movie.movieDirector}"></p>
+			                <p th:text="'주연 : ' + ${movie.movieActor}"></p>
+			                <p th:text="'개봉일 : ' + ${movie.movieRdate}"></p>
+			                <p th:text="'상영시간 : ' + ${movie.movieRtime}"></p>
+			                <p th:text="'가격 : ' + ${movie.moviePrice}"></p> 
+			                <p th:text="'줄거리 : ' + ${movie.movieStory}"></p>
 			                <div><button class="0" name="cartInsertBtn">담기</button></div>
 				                <br>
 			                <div><input type="button" value="이전 페이지" onClick="history.go(-1)"> </div>
@@ -110,7 +121,7 @@
 		            </div>
 	            </div>
 			</div>
-			
+
 			<div  id="result_section" th:fragment="cart_section">
 	    			<div align="center" id="movie_main_title" th:text="${member.name} + '님의 장바구니'"> User님의 장바구니</div>
 	    			<div th:if="${movies != null}">
@@ -121,6 +132,9 @@
 					                <h4 class="card-title">
 					                  <p th:text="${movie.movieTitle}" class="movieTitle"></p>
 					                </h4>
+					                  <span th:each="poster : ${posters}">
+					                  	<img th:if="${movie.movieCode == poster.movieCode}" id="poster" th:alt="${movie.movieTitle}+' 포스터'" th:src="'/poster/' + ${poster.posterPath} + '/'"  width="25" height="25%"/>
+					                </span>
 					                <p th:text="${#numbers.formatCurrency(movie.moviePrice)}"></p>
 					                	
 										<button class="btn btn-secondary my-2 my-sm-0" th:attrappend="id=${movieStat.index}" name="movieOrderBtn">구매</button>
@@ -129,15 +143,12 @@
 					                		<br><br>
 					                	<div><button class="btn btn-secondary my-2 my-sm-0" th:attrappend="id=${movieStat.index}" name="movieDetailBtn">자세히 보기</button></div>
 						                	<br>	
-
 					              </div>
 					            </div>
 					            </div>
 						</span>
 					</div>
 			</div>
-			
-			
 			
 			
 		</article>

@@ -1,0 +1,15 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/common :: head('Movie Detail')">
+    <title>Movie Mentor</title>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:replace="fragments/common :: menu('home')">
+	</nav>
+		<div id="movieDetail_section" th:replace="fragments/section :: movieDetail_section">
+		</div>
+</body>
+	    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+</html>

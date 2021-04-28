@@ -115,6 +115,3 @@ ___
 
 - Oracle XE : SQL Developer
 - TABLE : `USER`, `MOVIE`, `POSTER`, `CART`, `ORDER`
-
-
-

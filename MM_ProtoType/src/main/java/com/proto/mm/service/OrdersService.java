@@ -69,15 +69,15 @@ public class OrdersService {
 	
 	public List<Movie> findMovieByMovieCode (List<Orders> orders){
 		
-		List<Movie> cartMovies=new ArrayList<Movie>();
+		List<Movie> orderMovies=new ArrayList<Movie>();
 		
 		for(Orders order : orders) {
 			BigDecimal movieCode = order.getMovieCode();
 			Movie movie = new Movie();
 			movie = movieRepository.findByMovieCode(movieCode);
-			cartMovies.add(movie);
+			orderMovies.add(movie);
 		}
-		return cartMovies;
+		return orderMovies;
 	}
 
 	public void orderInsert(HttpServletRequest request, HttpServletResponse response) {
@@ -124,6 +124,9 @@ public class OrdersService {
 		Orders order = orderRepository.findByMemCountAndMovieCode(memCount, movieCode);
 		order.setOrderDown("1");
 		orderRepository.save(order);	
+		
+		
+		
 	}
 
 	public void deleteOrder(Model model, HttpServletRequest request, HttpServletResponse response) {

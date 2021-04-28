@@ -1,0 +1,24 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/common :: head('Search Result')">
+    <title>Movie Mentor</title>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:replace="fragments/common :: menu('home')">
+	</nav>
+	<article>
+
+		<div id="chat_section" th:replace="fragments/section :: chat_section">
+			<p>(리스폰스를 사용자와 챗봇으로 구분하여 If문과 Each문을 이용해 뿌려줍니다.)</p>
+		</div>
+		<div id="result_section" th:replace="${searched} ? ~{fragments/section :: movie_section} : ~{fragments/section :: home_section}">
+			<p>(영화 조회 결과를 Each문으로 뿌려줍니다.)</p>
+		</div>
+       
+	</article>
+
+</body>
+	    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+</html>

@@ -13,6 +13,7 @@ $(document).ready(function(){
 			});
 		}
 	});
+
 			/*
 			function filter(){
 
@@ -69,3 +70,5 @@ $(document).ready(function(){
 		
 	
 });
+
+

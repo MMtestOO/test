@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +22,7 @@ import com.proto.mm.model.Movie;
 import com.proto.mm.repository.MovieRepository;
 import com.proto.mm.service.MainService;
 import com.proto.mm.service.MovieService;
+import com.proto.mm.service.PosterService;
 
 
 @Controller
@@ -33,6 +33,9 @@ public class MovieController {
 	
 	@Autowired
 	MainService mainService;
+	
+	@Autowired
+	PosterService posterService;
 	
 	// Show movie detail
 	@RequestMapping(value = "movieDetail", 
@@ -45,6 +48,7 @@ public class MovieController {
 		movieService.showMovieDetail(model, movieTitle);
 		System.out.println("영화 자세히 보기 정보 : "+model+"\n"+movieTitle);
 		
+		
 		return "home";
 	}
 
@@ -56,7 +60,6 @@ public class MovieController {
 		mainService.signInCheck(model, request, response);
 		movieService.showMovieList(model, request, response);
 		System.out.println(model.getAttribute("searched"));
-		
 		return "home";
 	}
 	
@@ -91,6 +94,7 @@ public class MovieController {
         model.addAttribute("names", names);
         return "home";
     }
+
 	
 
 }

@@ -1,0 +1,48 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/common :: head('회원 정보')">
+    <title>회원 정보</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:replace="fragments/common :: menu('orderList')">
+</nav>
+<div class="container">
+	<h2>구매 이력</h2>
+	<div th:if="${movies != null}">
+		<div>총 구매 건수 : <span th:text="${#lists.size(movies)}"></span></div>
+	
+		<table class="table table-striped">
+		<thead>
+				<tr>
+					<th scope="col">INDEX</th>
+					<th scope="col">MOVIE_TITLE</th>
+					<th scope="col">MOVIE_PRICE</th>
+					<th scope="col">ORDER_DATE</th>
+					<th scope="col">DOWNLOAD</th>
+					<th scope="col">REFUND</th>
+				</tr>
+		</thead>
+	
+	<!-- 구매 이력 출력-->	
+		<thead>
+				<tr th:each="num : ${#numbers.sequence(1,#lists.size(movies))}">
+					<td><span th:text="${num}"></span></td>
+					<td><span th:text="${movies.get(num - 1).movieTitle}" class="movieTitle"></span></td>
+					<td><span th:text="${#numbers.formatCurrency(movies.get(num - 1).moviePrice)}"></span></td>
+					<td><span th:text="${orders.get(num - 1).orderDate}"></span></td>
+					<td th:if="${orders.get(num - 1).orderDown} == '0'"><button class="btn btn-secondary my-2 my-sm-0" name="downloadBtn" th:attrappend="id=${num - 1}">다운로드</button></td>
+					<td th:if="${orders.get(num - 1).orderDown} == '1'"><button class="btn btn-secondary my-2 my-sm-0" name="downloadBtn" disabled="disabled">다운로드</button></td>
+					<td th:if="${orders.get(num - 1).orderDown} == '0'"><button class="btn btn-secondary my-2 my-sm-0" name="refundBtn" th:attrappend="id=${num - 1}">환불받기</button></td>
+					<td th:if="${orders.get(num - 1).orderDown} == '1'"><button class="btn btn-secondary my-2 my-sm-0" name="refundBtn"  disabled="disabled">환불받기</button></td>
+				</tr>
+	
+		</thead>
+		</table>
+	</div>
+	<div th:if="${movies == null}">
+		<div>총 구매 건수 : 0</div>
+	</div>
+</div>
+	    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+</html>

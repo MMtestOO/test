@@ -19,14 +19,16 @@
 				<th scope="col">ID</th>
 				<th scope="col">PW</th>
 				<th scope="col">NAME</th>
+				<th scope="col">PREFERENCES</th>
 			</tr>
 	</thead>
 	<thead>
 			<tr th:each="member : ${members}">
-				<td><span th:text="${member.mem_count}"></span></td>
+				<td><span th:text="${member.memCount}"></span></td>
 				<td><span th:text="${member.id}"></span></td>
 				<td><span th:text="${member.pw}"></span></td>
 				<td><span th:text="${member.name}"></span></td>
+				<td><span th:text="${member.preference}"></span></td>
 			</tr>
 		
 	</thead>

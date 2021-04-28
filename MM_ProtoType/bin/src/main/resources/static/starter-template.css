@@ -2,7 +2,7 @@ body {
     padding-top: 5rem;
 }
 
-#result_section{
+#home_section{
     width: auto;
     text-align: center;
     height: 100vh;
@@ -19,6 +19,29 @@ body {
     margin-right:15px;
     margin-bottom:10px;
     font-size:22px;
+}
+
+div.card-body{
+	height:180px;
+}
+
+div.card-body-cart{
+	height:200px;
+}
+
+div.card-body-detail{
+	height:650px;
+	width: 300px;
+}
+
+div.col-md-6-detail {
+    width: 100%;
+}
+
+div.col-lg-4-detail{
+	padding-left: 15px;
+	padding-right: 15px;
+	max-width: 100%;
 }
 
 html{

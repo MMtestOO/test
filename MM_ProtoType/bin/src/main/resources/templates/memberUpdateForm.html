@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Modify Member</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="UTF-8"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" charset="UTF-8"></script>
+
+<script type="text/javascript" src="js/sign.js" charset="UTF-8"></script>
+ 	
+</head>
+<body>
+	<article class="container">
+            <div class="page-header">
+                <div class="col-md-6 col-md-offset-3">
+                <h3>회원 정보 수정</h3>
+                <h5>입력한 이름, 비밀번호가 수정 됩니다.</h5>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-offset-3">
+                <form role="form" >
+                    <div class="form-floating">
+                    	<label for="floatingInput">성명</label>
+				      	<input type="text" class="form-control" id="floatingName" placeholder="이름을 입력해주세요" required/>
+				    </div>
+                    <!-- ID는 수정 불가
+                    <div class="form-floating">
+				    	<label for="floatingInput">ID</label>
+				      	<input type="email" class="form-control" id="floatingID" placeholder="name@example.com" required/>
+				    </div>
+                    -->
+                    <br>
+                    <div class="form-group">
+                        <label for="InputEmail">영화 취향 선택</label><br>
+                       <label><input type="checkbox" name="preference" value="미스터리">미스터리</label>
+				    	<label><input type="checkbox" name="preference" value="스릴러">스릴러</label>
+				    	<label><input type="checkbox" name="preference" value="다큐멘터리">다큐멘터리</label>
+				    	<label><input type="checkbox" name="preference" value="애니메이션">애니메이션</label>
+				    	<label><input type="checkbox" name="preference" value="코미디">코미디</label>
+				    	<label><input type="checkbox" name="preference" value="가족">가족</label>
+				    	<label><input type="checkbox" name="preference" value="판타지">판타지</label>
+				    	<label><input type="checkbox" name="preference" value="공연실황">공연실황</label>
+				    	<label><input type="checkbox" name="preference" value="모험">모험</label>
+				    	<label><input type="checkbox" name="preference" value="드라마">드라마</label>
+				    	<label><input type="checkbox" name="preference" value="멜로/로맨스">멜로/로맨스</label>
+				    	<label><input type="checkbox" name="preference" value="액션">액션</label>
+				    	<label><input type="checkbox" name="preference" value="공포">공포</label>
+				    	<label><input type="checkbox" name="preference" value="범죄">범죄</label>
+				    	<label><input type="checkbox" name="preference" value="서스펜스">서스펜스</label>
+				    	<label><input type="checkbox" name="preference" value="SF">SF</label>
+				    	<label><input type="checkbox" name="preference" value="뮤지컬">뮤지컬</label>
+                    </div>
+                 
+                    <div class="form-floating">
+				   	 	<label for="floatingPassword">Password</label>	
+				      	<input type="password" class="form-control" id="floatingPassword" placeholder="Password" required/>
+				    </div>
+				     <br>
+                    <div class="form-group text-center">
+                        <input type="button" id="memberUpdateBtn" class="btn btn-primary" value="회원 정보 수정">
+                        <input type="button" class="btn btn-warning" value="취소" onClick="window.close()"> 
+                    </div>
+                </form>
+            </div>
+
+        </article>
+
+
+</body>
+
+</html>
+
