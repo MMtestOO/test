@@ -50,14 +50,14 @@
 			                <h4 class="card-title">
 			                  <p th:text="${movie.movieTitle}" class="movieTitle"></p>
 			                </h4>
-			               	<p th:text="${movie.movieRating}"></p>
-			                <p th:text="${movie.movieGenre}"></p>
-			                <p th:text="${movie.movieDirector}"></p>
-			                <p th:text="${movie.movieActor}"></p>
-			                <p th:text="${movie.movieRdate}"></p>
-			                <p th:text="${movie.movieRtime}"></p>
-			                <p th:text="${movie.moviePrice}"></p>
-			                <p th:text="${movie.movieStory}"></p>
+			               	<p th:text="'평점 : ' + ${movie.movieRating}"></p>
+			                <p th:text="'장르 : ' + ${movie.movieGenre}"></p>
+			                <p th:text="'감독 : ' + ${movie.movieDirector}"></p>
+			                <p th:text="'주연 : ' + ${movie.movieActor}"></p>
+			                <p th:text="'개봉일 : ' + ${movie.movieRdate}+ '분'"></p>
+			                <p th:text="'상영시간 : ' + ${movie.movieRtime}"></p>
+			                <p th:text="'가격 : ' + ${#numbers.formatCurrency(movie.moviePrice)}"></p> 
+			                <p th:text="'줄거리 : ' + ${movie.movieStory}"></p>
 			                <div><button class="btn btn-secondary my-2 my-sm-0" onClick="window.close()">닫기</button></div>
 				                <br>	
 			              <!-- </div> -->

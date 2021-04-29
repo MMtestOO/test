@@ -1,5 +1,16 @@
 body {
-    padding-top: 5rem;
+    /* padding-top: 5rem;
+    background-color: #000! important;
+    */
+}
+
+#poster{
+	display:block;
+	margin: 0px auto;
+	width: 15rem;
+  	height: 23rem;
+  	object-fit: cover;
+
 }
 
 #home_section{
@@ -7,31 +18,50 @@ body {
     text-align: center;
     height: 100vh;
     position: relative;
-    overflow:scroll;
+    overflow-y:auto;
+}
+
+#movie_section{
+	overflow-y:auto;
+	/* height: 100vh; */
+}
+
+#movieDetail_section{
+	overflow-y:auto;
 }
 
 #movie_main_title{
 	padding-top:30px;
 	padding-bottom:30px;
-	border:2px solid #000000;
-	border-radius:20px;
+	/*border:1px solid #000000 ;*/
+	/* border-radius:20px; */
     margin-left:15px;
     margin-right:15px;
     margin-bottom:10px;
-    font-size:22px;
+    font-size:22px; 
+    color: #fff;
+    background: linear-gradient(to right, #232526, #414345);
+}
+
+div.h-100{
+	border-radius: 0px! important;
+	background: transparent! important;
+	color: #000;
+	height: 500px! important;
+
 }
 
 div.card-body{
-	height:180px;
+	height:200px;
 }
 
 div.card-body-cart{
-	height:200px;
+	height:650px;
 }
 
 div.card-body-detail{
 	height:650px;
-	width: 300px;
+	width: 200px;
 }
 
 div.col-md-6-detail {
@@ -42,6 +72,11 @@ div.col-lg-4-detail{
 	padding-left: 15px;
 	padding-right: 15px;
 	max-width: 100%;
+}
+
+.navbar {
+    border-radius: 0px! important;
+    background: #000! important;
 }
 
 html{

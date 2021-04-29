@@ -109,7 +109,6 @@ public class MovieService {
 		String searchValue = request.getParameter("searchValue"); 
 		JSONArray arrayObj = new JSONArray();
 		JSONObject jsonObj = null; 
-		//////////// 임의의 데이터(db라 가정하자) //////////// 
 		ArrayList<String> resultlist = new ArrayList<String>(); 
 
 		List<Movie> movies = movieRepository.findByMovieTitleStartsWith(searchValue, Sort.by(Sort.Direction.ASC, "movieTitle"));
@@ -118,7 +117,6 @@ public class MovieService {
 			String str = movie.getMovieTitle();
 				resultlist.add(str); 
 			} 
-		///////////resultlist를 db에서 조회후 뽑아온 list라고 가정한다./////////// 
 		//뽑은 후 json파싱 
 		for(String str : resultlist) {
 			jsonObj = new JSONObject();

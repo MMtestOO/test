@@ -18,6 +18,11 @@
 	</properties>
 	<dependencies>
 		<dependency>
+			<groupId>net.morimekta.utils</groupId>
+			<artifactId>android-util</artifactId>
+			<version>2.7.1</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
@@ -59,6 +64,35 @@
 		    <groupId>com.googlecode.json-simple</groupId>
 		    <artifactId>json-simple</artifactId>
 		    <version>1.1.1</version>
+		</dependency>
+		
+	    <dependency>
+	            <groupId>org.json</groupId>
+	            <artifactId>json</artifactId>
+	            <version>20180813</version>
+		</dependency>
+
+
+	
+    	<!--  Gson: Java to Json conversion -->
+    	<dependency>
+      	<groupId>com.google.code.gson</groupId>
+      	<artifactId>gson</artifactId>
+      	<version>2.6.2</version>
+      	<scope>compile</scope>
+    	</dependency>
+
+		<!--Multipart File Up&Download -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.0</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
 		</dependency>
 
 	</dependencies>

@@ -6,7 +6,8 @@ body {
 #index_text{
 	font-size: large;
 	font-family:"Malgun Gothic";
-	color: #8f838b;
+	/* color: #8f838b; */
+	color: #f5f5f5;
 }
 
 #index_head_text{
@@ -16,12 +17,45 @@ body {
 	color: #ff8080;
 }
 
+#index_head_text{
+	/* animation: blink 1.5s linear infinite; */
+	animation: blink 1s 0s ease infinite;
+	text-shadow: 0 0 .1em, 0 0 .3em;
+}
+
+@keyframes blink {
+    0%,
+    100% {
+    text-shadow: 
+    -.1vw 0vw 5vw #F0130B, -.2vw 0vw 5vw #F0130B, -.4vw 0vw .8vw #F0130B, .2vw 0vw 10vw #F0130B;
+      color: #FED128;
+    }
+    50% {
+    text-shadow: 
+    -.1vw 0vw .2vw #5C0704, -.2vw 0vw .2vw #5C0704, -.4vw 0vw .2vw #5C0704, .2vw 0vw .5vw #5C0704;
+      color: #705C12;
+    }
+}
+
+#signInBtn{
+	background: #1e88E5;
+}
+
+#signUpBtn{
+	background: #43A047;
+}
+
+.mb-4 {
+    margin-bottom: 0rem!important;
+}
+
 body {
   display: flex;
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
+  background: #222222;
 }
 
 .btn-primary-up{
@@ -43,6 +77,7 @@ body {
   max-width: 330px;
   padding: 15px;
   margin: auto;
+  height: 250px;
 }
 
 .form-signin .checkbox {
@@ -63,6 +98,10 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.text-muted {
+    color: #f5f5f5!important;
 }
 
 .bd-placeholder-img {

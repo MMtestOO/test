@@ -3,6 +3,7 @@
 
 <body>
 	<main class="form-signin" th:fragment="nonLogin">
+	  <div class="signin-container">
 	  <form>
 	    <div class="form-floating">
 	      <input type="email" class="form-control" id="floatingID" placeholder="name@example.com">
@@ -22,6 +23,7 @@
 	  <footer>
 	    <p class="mt-5 mb-3 text-muted">&copy; Movie Mentor 2021</p>
 	  </footer>
+	  </div>
 	</main>
 	
 	<main class="form-signin" th:fragment="Logined">
@@ -60,7 +62,7 @@
 				    
 				    <div class="form-floating">
 				    	<label for="floatingInput">영화 취향 선택(필수)</label>
-				    	<br/ >
+				    	<br>
 				    	<label><input type="checkbox" name="preference" value="미스터리">미스터리</label>
 				    	<label><input type="checkbox" name="preference" value="스릴러">스릴러</label>
 				    	<label><input type="checkbox" name="preference" value="다큐멘터리">다큐멘터리</label>
