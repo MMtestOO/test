@@ -2,24 +2,22 @@ package com.proto.mm.controller;
 
 
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
-import com.proto.mm.model.Movie;
-import com.proto.mm.repository.MovieRepository;
 import com.proto.mm.service.MainService;
 import com.proto.mm.service.MovieService;
 import com.proto.mm.service.PosterService;
@@ -84,17 +82,18 @@ public class MovieController {
 	}
 
 	@RequestMapping(value = "autoSearch", 
-			method= {RequestMethod.GET})
-    public String autoSearch(Model model) {
-        List<String> names = new ArrayList<>();
-        names.add("Kyungtae");
-        names.add("Hyerin");
-        names.add("Seonha");
-        names.add("Jinchul");
-        model.addAttribute("names", names);
-        return "home";
-    }
-
-	
-
+			method= {RequestMethod.GET},
+			produces = "application/json; charset=utf8")
+	@ResponseBody
+    public void autoSearch(Model model,HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		mainService.signInCheck(model, request, response);
+		JSONArray arrayObj = movieService.autoSearch(request, response);
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter pw = response.getWriter(); 
+		pw.print(arrayObj); 
+		pw.flush(); 
+		pw.close();
+		
+	}
 }

@@ -2,9 +2,9 @@
 $(document).ready(function(){
 	$("button[name=cartInsertBtn]").click(function(){ 
 	
-		var index = $(this).attr("class");
+		var index = $(this).attr("id");
 		
-		var movieTitle=$('.movieTitle').eq(index).text();	
+		var movieTitle=$('.movieTitle').eq(index).text();
 		
 	$.post("cartInsert",
 		{			   

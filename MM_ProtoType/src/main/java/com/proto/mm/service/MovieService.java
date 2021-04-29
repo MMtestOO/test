@@ -1,10 +1,19 @@
 package com.proto.mm.service;
 
+
+import java.math.BigDecimal;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -64,6 +73,61 @@ public class MovieService {
 			System.out.println(e.getStackTrace());
 		}
 		return model;
+	}
+	
+	public Model movieFilter(Model model, String movieGenre, int movieRating, int moviePrice,String movieRdate,int movieRtime) {
+		try {
+			System.out.println("영화 필터 호출");
+			List<Movie> movies = null;
+			if(!movieGenre.equals("") && movieRating == 0 && moviePrice == 0 && movieRdate.equals("") && movieRtime == 0) {
+				movies = movieRepository.findByMovieGenre(movieGenre, Sort.by(Sort.Direction.ASC, "movieCode"));
+			}else if(!movieGenre.equals("") && movieRating != 0 && moviePrice == 0 && movieRdate.equals("") && movieRtime == 0) {
+				movies = movieRepository.findByMovieGenreAndMovieRatingGreaterThanEqual(movieGenre, new BigDecimal(movieRating), Sort.by(Sort.Direction.ASC, "movieCode"));
+			}else if(!movieGenre.equals("") && movieRating != 0 && moviePrice != 0 && movieRdate.equals("") && movieRtime == 0) {
+				movies = movieRepository.findByMovieGenreAndMovieRatingGreaterThanEqualAndMoviePriceLessThanEqual(movieGenre, new BigDecimal(movieRating), new BigDecimal(moviePrice), Sort.by(Sort.Direction.ASC, "movieCode"));
+			}else if(!movieGenre.equals("") && movieRating != 0 && moviePrice != 0 && !movieRdate.equals("") && movieRtime == 0) {
+				movies = movieRepository.findByMovieGenreAndMovieRatingGreaterThanEqualAndMoviePriceLessThanEqualAndMovieRdateContains(movieGenre, new BigDecimal(movieRating), new BigDecimal(moviePrice), movieRdate, Sort.by(Sort.Direction.ASC, "movieCode"));
+			}else if(!movieGenre.equals("") && movieRating != 0 && moviePrice != 0 && !movieRdate.equals("") && movieRtime != 0) {
+				movies = movieRepository.findByMovieGenreAndMovieRatingGreaterThanEqualAndMoviePriceLessThanEqualAndMovieRdateContainsAndMovieRtimeLessThanEqual(movieGenre, new BigDecimal(movieRating), new BigDecimal(moviePrice), movieRdate, new BigDecimal(movieRtime), Sort.by(Sort.Direction.ASC, "movieCode"));
+			}
+			if(movies != null)
+			{
+				model.addAttribute("movies", movies);
+				for(Movie movie : movies) {
+					System.out.println(movie.toString());
+				}
+			}
+			
+		}catch(NullPointerException e) {
+			System.out.println(e.getStackTrace());
+		}
+		return model;
+	}
+
+	public JSONArray autoSearch(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		String searchValue = request.getParameter("searchValue"); 
+		JSONArray arrayObj = new JSONArray();
+		JSONObject jsonObj = null; 
+		//////////// 임의의 데이터(db라 가정하자) //////////// 
+		ArrayList<String> resultlist = new ArrayList<String>(); 
+
+		List<Movie> movies = movieRepository.findByMovieTitleStartsWith(searchValue, Sort.by(Sort.Direction.ASC, "movieTitle"));
+		
+		for(Movie movie : movies) { 
+			String str = movie.getMovieTitle();
+				resultlist.add(str); 
+			} 
+		///////////resultlist를 db에서 조회후 뽑아온 list라고 가정한다./////////// 
+		//뽑은 후 json파싱 
+		for(String str : resultlist) {
+			jsonObj = new JSONObject();
+			jsonObj.put("data", str);
+			arrayObj.add(jsonObj); 
+			} 
+		
+		return arrayObj;
+
 	}
 	
 }

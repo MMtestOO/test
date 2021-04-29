@@ -54,10 +54,10 @@ public class CartController {
 				if (orderService.orderCheck(request, response) != null) {
 					return "이미 구매한 영화 입니다.";
 				}else if(cartService.cartCheck(request, response) == null) {
-				cartService.cartInsert(request, response);
-				String movieTitle = request.getParameter("movieTitle");
+					cartService.cartInsert(request, response);
+					String movieTitle = request.getParameter("movieTitle");
 				
-				return movieTitle + " 이(가) 장바구니에 담겼습니다.";
+					return movieTitle + " 이(가) 장바구니에 담겼습니다.";
 				}else {
 					return "이미 장바구니에 담겨있습니다.";
 				}

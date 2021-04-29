@@ -19,5 +19,25 @@ public interface MovieRepository extends JpaRepository<Movie, BigDecimal>{
 	public List<Movie> findByMovieTitleContains(String movieTitle, Sort sort);
 	
 	public List<Movie> findTop6ByMovieGenreContains(String movieGenre, Sort sort);
+
+	public List<Movie> findByMovieTitleStartsWith(String searchValue, Sort sort);
+	
+	public List<Movie> findByMovieGenre(String movieGenre, Sort sort);
+	
+	public List<Movie> findByMovieGenreAndMovieRatingGreaterThanEqual(String movieGenre, BigDecimal movieRating, Sort sort);
+	
+	public List<Movie> findByMovieGenreAndMovieRatingGreaterThanEqualAndMoviePriceLessThanEqual(String movieGenre, BigDecimal movieRating, BigDecimal moviePrice, Sort sort);
+	
+	public List<Movie> findByMovieGenreAndMovieRatingGreaterThanEqualAndMoviePriceLessThanEqualAndMovieRdateContains(String movieGenre, BigDecimal movieRating, BigDecimal moviePrice, String movieRdate, Sort sort);
+	
+	public List<Movie> findByMovieGenreAndMovieRatingGreaterThanEqualAndMoviePriceLessThanEqualAndMovieRdateContainsAndMovieRtimeLessThanEqual(String movieGenre, BigDecimal movieRating, BigDecimal moviePrice, String movieRdate, BigDecimal movieRtime, Sort sort);
+	
+	public List<Movie> findByMovieGenreOrMovieRatingGreaterThanEqual(String movieGenre, BigDecimal movieRating, Sort sort);
+	
+	public List<Movie> findByMovieGenreAndMovieRatingGreaterThanEqualOrMoviePriceLessThanEqual(String movieGenre, BigDecimal movieRating, BigDecimal moviePrice, Sort sort);
+	
+	public List<Movie> findByMovieGenreAndMovieRatingGreaterThanEqualAndMoviePriceLessThanEqualOrMovieRdateContains(String movieGenre, BigDecimal movieRating, BigDecimal moviePrice, String movieRdate, Sort sort);
+	
+	public List<Movie> findByMovieGenreAndMovieRatingGreaterThanEqualAndMoviePriceLessThanEqualAndMovieRdateContainsOrMovieRtimeLessThanEqual(String movieGenre, BigDecimal movieRating, BigDecimal moviePrice, String movieRdate, BigDecimal movieRtime, Sort sort);
 	
 }

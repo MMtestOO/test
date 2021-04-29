@@ -41,15 +41,21 @@
 
 	    <!-- <script type="text/javascript" src="js/search.js" charset="UTF-8"></script> -->
 		<script type="text/javascript" src="js/cart.js" charset="UTF-8"></script>
+
+		<script type="text/javascript" src="js/chat.js" charset="UTF-8"></script>
+
 		
 		<!-- Automated Search Function -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		
 		<script type="text/javascript" src="js/autoSearch.js" charset="UTF-8"></script>
+
 		
 	
 	    <title th:text="${title}">Movie Mentor</title>
+
 	</head>
 	
 	
@@ -82,10 +88,11 @@
         	<!-- 검색 창-->	        
 	        <div>
 	            <form class="form-inline my-2 my-lg-0" method="get" action="movieSearch">
-	                <input class="form-control mr-sm-2" id= "movieTitle" name="movieTitle" type="text" placeholder="Search" aria-label="Search">
+	                <input class="form-control mr-sm-2" id= "autocompleteText" name="movieTitle" type="text" placeholder="Search" aria-label="Search">
 	                <button class="btn btn-secondary my-2 my-sm-0" type="submit" value="Search">Search</button>
 	            </form>
 	        </div>
+
 			
 	        <!-- 로그인 상태 표시 칸-->
 	        <ul class="navbar-nav mr-auto">
@@ -101,6 +108,6 @@
 	            </li>
 	        </ul>
 	    </nav>     
-	                    
+           
 	</body>  
 </html>

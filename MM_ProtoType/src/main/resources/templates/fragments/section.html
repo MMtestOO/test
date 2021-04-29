@@ -65,13 +65,14 @@
                			
 			          <div class="col-lg-4 col-md-6 mb-4">
 			            <div align="center" class="card h-100">
+			            <div class="card-header text-white bg-secondary"><h4 th:text="${movie.movieTitle}" class="movieTitle"></h4></div>
 			              <div class="card-body">
-			                <h4 class="card-title">
+			               <!--  <h4 class="card-title">
 			                  <p th:text="${movie.movieTitle}" class="movieTitle"></p>
 
-			                </h4>
-			                <p th:text="${movie.movieGenre}"></p>
-			                <p th:text="${movie.movieRating}"></p>
+			                </h4> -->
+			                <p th:text="'장르 : ' + ${movie.movieGenre}"></p>
+			                <p th:text="'평점 : ' + ${movie.movieRating}"></p>
 
 			                   </h4>
 			                <span th:each="poster : ${posters}">
@@ -88,8 +89,8 @@
 						            	<br>
 								</div>
 			                </span>
-			               
-			                <p th:text="${movie.moviePrice}"></p>
+			                <br><br>
+			                <p th:text="${#numbers.formatCurrency(movie.moviePrice)}"></p>
 					                
 				                <br>
 			              </div>
@@ -188,4 +189,3 @@
 	                        </div>
                         </div>
                     </div> -->
-           

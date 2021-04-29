@@ -100,6 +100,7 @@ public class CartService {
 	
 	public Cart cartCheck(HttpServletRequest request,
 			HttpServletResponse response) {
+		System.out.println("장바구니 영화 확인");
 		HttpSession session = request.getSession(false);
 		Member member = (Member) session.getAttribute("member");
 		BigDecimal memCount = member.getMemCount();
@@ -108,7 +109,7 @@ public class CartService {
 		Movie movie = movieRepository.findByMovieTitle(movie_title);
 		BigDecimal movieCode = movie.getMovieCode();
 		
-		return cartRepository.findByMovieCodeAndMemCount(memCount, movieCode);
+		return cartRepository.findByMovieCodeAndMemCount(movieCode,memCount);
 
 		
 	}
