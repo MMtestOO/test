@@ -47,12 +47,13 @@
 		
 		<!-- Automated Search Function -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" href="" th:href="@{/autocomplete.css}">
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 		
 		<script type="text/javascript" src="js/autoSearch.js" charset="UTF-8"></script>
 
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 		
 	
@@ -89,10 +90,48 @@
 	        </div>
         	<!-- 검색 창-->	        
 	        <div>
-	            <form class="form-inline my-2 my-lg-0" method="get" action="movieSearch">
+	            <!--  <form class="form-inline my-2 my-lg-0" method="get" action="movieSearch">
 	                <input class="form-control mr-sm-2" id= "autocompleteText" name="movieTitle" type="text" placeholder="Search" aria-label="Search">
 	                <button class="btn btn-secondary my-2 my-sm-0" type="submit" value="Search">Search</button>
+	            </form> -->
+	            <form class="form-inline my-2 my-lg-0" method="get" action="movieSearch">
+	            	<div class="search-box">
+		            	<input type="text" placeholder="영화를 입력 후 Enter를 치세요" id= "autocompleteText" name="movieTitle" aria-label="Search">
+		            	<div class="search-btn" type="submit" value="Search">
+		            		<i class="fas fa-search"></i>		            		
+		            	</div>
+		            	<div class="cancel-btn">
+		            		<i class="fas fa-times"></i>
+		            	</div>
+	            	</div>
 	            </form>
+	            
+	            <script>
+	            	const searchBtn=document.querySelector(".search-btn");
+	            	const cancelBtn=document.querySelector(".cancel-btn");
+	            	const searchBox=document.querySelector(".search-box");
+	            	const searchInput=document.querySelector("input");
+	            	searchBtn.onclick=() =>{
+	            		searchBox.classList.add("active");
+	            		searchInput.classList.add("active");
+	            		searchBtn.classList.add("active");
+	            		cancelBtn.classList.add("active");
+	            		if(searchInput.value != ""){
+	            			var values = searchInput.value;
+	            			$.get("moiveSearch",{
+	        					movieTitle:values
+	        				});
+	            	          
+	            	    }
+	            	}
+	            	
+	            	cancelBtn.onclick=() =>{
+	            		searchBox.classList.remove("active");
+	            		searchInput.classList.remove("active");
+	            		searchBtn.classList.remove("active");
+	            		cancelBtn.classList.remove("active");
+	            	}
+	            </script>
 	        </div>
 
 			
