@@ -57,7 +57,7 @@ public class CartController {
 					cartService.cartInsert(request, response);
 					String movieTitle = request.getParameter("movieTitle");
 				
-					return movieTitle + " 이(가) 장바구니에 담겼습니다.";
+					return movieTitle + "이(가) 장바구니에 담겼습니다.";
 				}else {
 					return "이미 장바구니에 담겨있습니다.";
 				}
@@ -77,7 +77,7 @@ public class CartController {
 			cartService.cartDelete(cart);
 			String movieTitle = request.getParameter("movieTitle");
 			
-			return movieTitle + "삭제 되었습니다.";
+			return movieTitle + " 삭제 되었습니다.";
 			
 		}catch(Exception e) {
 			return e.getMessage();

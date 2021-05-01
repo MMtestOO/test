@@ -191,7 +191,7 @@ body {
 
 #movie_section{
 	overflow-y:auto;
-	/* height: 100vh; */
+	/*height: 100vh;*/
 }
 
 #movieDetail_section{
@@ -211,11 +211,15 @@ body {
     background: linear-gradient(to right, #232526, #414345);
 }
 
+#signOutBtn{
+	margin-top:8px! important;
+}
+
 div.h-100{
 	border-radius: 0px! important;
 	background: transparent! important;
 	color: #000;
-	height: 500px! important;
+	height: 450px! important;
 
 }
 
@@ -249,10 +253,13 @@ div.col-lg-4-detail{
 
 html{
     height: 100vh;
+
 }
 
 article{
     height: 100vh;
+    margin-left:50px;
+    margin-right:50px;
 }
 
 div {

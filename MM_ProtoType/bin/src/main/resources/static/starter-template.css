@@ -13,6 +13,93 @@ body {
 
 }
 
+.image_overlay
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.6);
+	color: #ffffff;
+	font-family: 'Poppins', san-serif;
+	display: flex; 
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: opacity 0.25s;
+	
+}
+
+.image_overlay_blur
+{
+	backdrop-filter: blur(5px);
+}
+
+.image_overlay > *
+{
+	transform: translateY(20px);
+	transition: transform 0.25s;
+}
+
+.image_overlay:hover
+{
+	opacity: 1;
+}
+
+.image_overlay:hover > *
+{
+	transform: translateY(0);
+}
+
+.image_movieStory
+{
+	font-size: 0.8em;
+	font-weight: bold;
+}
+
+.movieDetailBtn
+{
+	position: relative;
+	display: inline-block;
+	padding: 10px 30px;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: rgba(255,255,255,0.4);
+	background: #262c37;
+	letter-spacing: 2px;
+	font-size: 16px;
+	transition: 0.5s;
+
+}
+
+.movieDetailBtn:hover
+{
+	color: rgba(255,255,255,1);
+}
+
+
+.cartInsertBtn
+{
+	position: relative;
+	display: inline-block;
+	padding: 10px 30px;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: rgba(255,255,255,0.4);
+	background: #262c37;
+	letter-spacing: 2px;
+	font-size: 16px;
+	transition: 0.5s;
+
+}
+
+.cartInsertBtn:hover
+{
+	color: rgba(255,255,255,1);
+}
+
 #home_section{
     width: auto;
     text-align: center;
@@ -47,7 +134,7 @@ div.h-100{
 	border-radius: 0px! important;
 	background: transparent! important;
 	color: #000;
-	height: 500px! important;
+	height: 450px! important;
 
 }
 

@@ -72,7 +72,6 @@
 	            <version>20180813</version>
 		</dependency>
 
-
 	
     	<!--  Gson: Java to Json conversion -->
     	<dependency>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+ 
+카카오페이 결제가 정상적으로 완료되었습니다.
+
+<p th:text="'결제일시:     ' + ${info.approved_at}"></p>
+<p th:text="'주문번호:     ' + ${info.partner_order_id}"></p>
+<p th:text="'상품명:      ' + ${info.item_name}"></p>
+<p th:text="'결제금액:     ' + ${info.amount.total} + '원'"></p>
+<p th:text="'결제방법:     ' + ${info.payment_method_type}"></p>
+<p th:text="'결제카드:     ' + ${info.card_info.purchase_corp}"></p>
+ 
+<!-- <h2 th:text="${info}"></h2>  --> 
+
+<input type="button" value="확인" onClick="kakaoSuccessBtn_close();"> 
+
+</body>
+<script>
+function kakaoSuccessBtn_close(){
+	opener.parent.location.href = "orderList";
+	window.close();	
+}
+</script>
+</html>

@@ -61,7 +61,7 @@ public class MemberController {
 			Member result = memberService.idCheck(id);
 			if(result == null) {
 				memberService.memberInsert(m);
-				return name+"님 회원가입 되셨습니다";	
+				return name+"님 회원가입 되셨습니다.";	
 			}else {
 				return "아이디가 중복입니다.";
 			}
@@ -136,7 +136,7 @@ public class MemberController {
 		memberService.memberInsert(result);
 		session.setAttribute("member", result);
 		
-		return result.getName()+"님 회원 정보 수정 되셨습니다";	
+		return result.getName()+"님 회원 정보 수정 되셨습니다.";	
 	}
 	
 	@RequestMapping(value = "memberDelete",
@@ -152,6 +152,6 @@ public class MemberController {
 		memberService.memberDelete(member);
 		session.invalidate();
 		
-		return member.getName()+"님 회원 탈퇴되셨습니다";	
+		return member.getName()+"님 회원 탈퇴되셨습니다.";	
 	}
 }

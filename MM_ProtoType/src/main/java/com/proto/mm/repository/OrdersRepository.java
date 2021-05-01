@@ -13,4 +13,7 @@ public interface OrdersRepository extends JpaRepository<Orders, BigDecimal>{
 	public List<Orders> findByMemCount(BigDecimal memCount, Sort sort);
 
 	public Orders findByMemCountAndMovieCode(BigDecimal memCount, BigDecimal movieCode);
+	
+	
+	
 }

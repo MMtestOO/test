@@ -43,13 +43,18 @@ $(document).ready(function(){
 	$("button[name=movieOrderBtn]").click(function(){ 
 		var index = $(this).attr("id");
 		var movieTitle=$('.movieTitle').eq(index).text();
-		$.get('movieOrder',
-				{			   
-					movieTitle:movieTitle
-				},
-				function(data){
-					window.open('movieOrder?movieTitle='+movieTitle,'_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=500,width=400,height=500');
-				});
+		$.post("orderInsert",
+			{			   
+				movieTitle:movieTitle,
+			},
+			function(data){
+					if(data != "이미 구매한 영화 입니다."){
+						alert(data);
+					}else{
+						alert(data);
+						alert("장바구니에서 삭제되었습니다.");
+					}
+			});
 		
 	});
 });
@@ -67,6 +72,7 @@ $(document).ready(function(){
 });
 
 //영화 구매
+/*
 $(document).ready(function(){
 	$("#orderBtn").click(function(){ 	
 		var movieTitle=$('.movieTitle').text();	
@@ -103,7 +109,7 @@ $(document).ready(function(){
 	
 		});
 });
-
+*/
 //영화 다운로드
 $(document).ready(function(){
 	$("button[name=downloadBtn]").click(function(){ 

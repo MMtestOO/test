@@ -80,15 +80,15 @@ public class MovieService {
 			System.out.println("영화 필터 호출");
 			List<Movie> movies = null;
 			if(!movieGenre.equals("") && movieRating == 0 && moviePrice == 0 && movieRdate.equals("") && movieRtime == 0) {
-				movies = movieRepository.findByMovieGenre(movieGenre, Sort.by(Sort.Direction.ASC, "movieCode"));
+				movies = movieRepository.findByMovieGenreContains(movieGenre, Sort.by(Sort.Direction.ASC, "movieCode"));
 			}else if(!movieGenre.equals("") && movieRating != 0 && moviePrice == 0 && movieRdate.equals("") && movieRtime == 0) {
-				movies = movieRepository.findByMovieGenreAndMovieRatingGreaterThanEqual(movieGenre, new BigDecimal(movieRating), Sort.by(Sort.Direction.ASC, "movieCode"));
+				movies = movieRepository.findByMovieGenreContainsAndMovieRatingGreaterThanEqual(movieGenre, new BigDecimal(movieRating), Sort.by(Sort.Direction.ASC, "movieCode"));
 			}else if(!movieGenre.equals("") && movieRating != 0 && moviePrice != 0 && movieRdate.equals("") && movieRtime == 0) {
-				movies = movieRepository.findByMovieGenreAndMovieRatingGreaterThanEqualAndMoviePriceLessThanEqual(movieGenre, new BigDecimal(movieRating), new BigDecimal(moviePrice), Sort.by(Sort.Direction.ASC, "movieCode"));
+				movies = movieRepository.findByMovieGenreContainsAndMovieRatingGreaterThanEqualAndMoviePriceLessThanEqual(movieGenre, new BigDecimal(movieRating), new BigDecimal(moviePrice), Sort.by(Sort.Direction.ASC, "movieCode"));
 			}else if(!movieGenre.equals("") && movieRating != 0 && moviePrice != 0 && !movieRdate.equals("") && movieRtime == 0) {
-				movies = movieRepository.findByMovieGenreAndMovieRatingGreaterThanEqualAndMoviePriceLessThanEqualAndMovieRdateContains(movieGenre, new BigDecimal(movieRating), new BigDecimal(moviePrice), movieRdate, Sort.by(Sort.Direction.ASC, "movieCode"));
+				movies = movieRepository.findByMovieGenreContainsAndMovieRatingGreaterThanEqualAndMoviePriceLessThanEqualAndMovieRdateContains(movieGenre, new BigDecimal(movieRating), new BigDecimal(moviePrice), movieRdate, Sort.by(Sort.Direction.ASC, "movieCode"));
 			}else if(!movieGenre.equals("") && movieRating != 0 && moviePrice != 0 && !movieRdate.equals("") && movieRtime != 0) {
-				movies = movieRepository.findByMovieGenreAndMovieRatingGreaterThanEqualAndMoviePriceLessThanEqualAndMovieRdateContainsAndMovieRtimeLessThanEqual(movieGenre, new BigDecimal(movieRating), new BigDecimal(moviePrice), movieRdate, new BigDecimal(movieRtime), Sort.by(Sort.Direction.ASC, "movieCode"));
+				movies = movieRepository.findByMovieGenreContainsAndMovieRatingGreaterThanEqualAndMoviePriceLessThanEqualAndMovieRdateContainsAndMovieRtimeLessThanEqual(movieGenre, new BigDecimal(movieRating), new BigDecimal(moviePrice), movieRdate, new BigDecimal(movieRtime), Sort.by(Sort.Direction.ASC, "movieCode"));
 			}
 			if(movies != null)
 			{
