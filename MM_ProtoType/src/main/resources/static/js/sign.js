@@ -462,12 +462,12 @@ $(document).ready(function() {
 		var control ='<label for="floatingPhone">Phone</label>'
 					+'<div id="phone-box">'
 					+'<input type="tel" class="form-control" id="inputPhoneNumber" value='+phoneNumber+' required>'
-					+'<input type="button" id="sendPhoneNumberRetry" class="btn btn-primary" value="인증번호 재발송" ><br>'
+					+'&nbsp;&nbsp;<input type="button" id="sendPhoneNumberRetry" class="btn btn-primary" value="인증번호 재발송" ><br>'
 					+'</div>'
 					+'<label for="floatingInput">인증번호입력</label>'
 					+'<div id="phone-box">'
 					+'<input type="text" class="form-control" id="inputCertifiedNumber" placeholder="인증번호 입력" required>'
-					+'<input type="button" id="checkBtn" class="btn btn-primary" value="확인" >'
+					+'&nbsp;&nbsp;<input type="button" id="checkBtn" class="btn btn-primary" value="확인" >'
 					+'</div>';
 		$('.phone-box').html(control);
 		
@@ -489,7 +489,7 @@ $(document).ready(function() {
 					control ='<label for="floatingPhone">Phone</label>'
 						+'<div id="phone-box">'
 						+'<input type="tel" class="form-control" id="inputPhoneNumber" placeholder="숫자만 입력해주세요" required />'
-						+'<input type="button" id="sendPhoneNumber" class="btn btn-primary" value="인증번호 발송">'
+						+'&nbsp;&nbsp;<input type="button" id="sendPhoneNumber" class="btn btn-primary" value="인증번호 발송">'
 						+'</div>';
 					$('.phone-box').html(control);
 					
@@ -501,7 +501,7 @@ $(document).ready(function() {
 					control ='<label for="floatingPhone">Phone</label>'
 						+'<div id="phone-box">'
 						+'<input type="tel" class="form-control" id="inputPhoneNumber" placeholder="숫자만 입력해주세요" required />'
-						+'<input type="button" id="sendPhoneNumber" class="btn btn-primary" value="인증번호 발송">'
+						+'&nbsp;&nbsp;<input type="button" id="sendPhoneNumber" class="btn btn-primary" value="인증번호 발송">'
 						+'</div>';
 					$('.phone-box').html(control);
 				}
@@ -515,7 +515,7 @@ $(document).ready(function() {
 						control ='<label for="floatingPhone">Phone</label>'
 								+'<div id="phone-box">'
 								+'<input type="tel" class="form-control" id="inputPhoneNumber" value='+phoneNumber+' required disabled="disabled"/>'
-								+'<input type="button" id="sendPhoneNumber" class="btn btn-primary" value="인증완료" disabled="disabled">'
+								+'&nbsp;&nbsp;<input type="button" id="sendPhoneNumber" class="btn btn-primary" value="인증완료" disabled="disabled">'
 								+'</div>';
 						$('.phone-box').html(control);
 					} else {
@@ -581,7 +581,7 @@ $(document).on("click",'#sendPhoneNumberRetry',function() {
 				control ='<label for="floatingPhone">Phone</label>'
 					+'<div id="phone-box">'
 					+'<input type="tel" class="form-control" id="inputPhoneNumber" placeholder="숫자만 입력해주세요" required />'
-					+'<input type="button" id="sendPhoneNumber" class="btn btn-primary" value="인증번호 발송">'
+					+'&nbsp;&nbsp;<input type="button" id="sendPhoneNumber" class="btn btn-primary" value="인증번호 발송">'
 					+'</div>';
 				$('.phone-box').html(control);
 				
@@ -593,7 +593,7 @@ $(document).on("click",'#sendPhoneNumberRetry',function() {
 				control ='<label for="floatingPhone">Phone</label>'
 					+'<div id="phone-box">'
 					+'<input type="tel" class="form-control" id="inputPhoneNumber" placeholder="숫자만 입력해주세요" required />'
-					+'<input type="button" id="sendPhoneNumber" class="btn btn-primary" value="인증번호 발송">'
+					+'&nbsp;&nbsp;<input type="button" id="sendPhoneNumber" class="btn btn-primary" value="인증번호 발송">'
 					+'</div>';
 				$('.phone-box').html(control);
 			}else{
@@ -606,7 +606,7 @@ $(document).on("click",'#sendPhoneNumberRetry',function() {
 					control ='<label for="floatingPhone">Phone</label>'
 							+'<div id="phone-box">'
 							+'<input type="tel" class="form-control" id="inputPhoneNumber" value='+phoneNumber+' required disabled="disabled"/>'
-							+'<input type="button" id="sendPhoneNumber" class="btn btn-primary" value="인증완료" disabled="disabled">'
+							+'&nbsp;&nbsp;<input type="button" id="sendPhoneNumber" class="btn btn-primary" value="인증완료" disabled="disabled">'
 							+'</div>';
 					$('.phone-box').html(control);
 				} else {
@@ -664,7 +664,7 @@ $(document).ready(function() {
 						control ='<label for="floatingPhone">Phone</label>'
 							+'<div id="phone-box">'
 							+'<input type="tel" class="form-control" id="inputPhoneNumber" placeholder="숫자만 입력해주세요" required />'
-							+'<input type="button" id="sendPhoneNumber" class="btn btn-primary" value="인증번호 발송">'
+							+'&nbsp;&nbsp;<input type="button" id="sendPhoneNumber" class="btn btn-primary" value="인증번호 발송">'
 							+'</div>';
 						$('.phone-box').html(control);
 					}
@@ -714,9 +714,11 @@ $(document).ready(function() {
 							if (result.isConfirmed) {
 								control = '<div class="form-floating">'
 						   	 			+'<label for="floatingPassword">Password</label>'
-						   	 			+'<input type="password" class="form-control" id="floatingPassword" placeholder="Password" required/>'
+						   	 			+'<div id="phone-box">'
+						   	 			+'<input type="password" class="form-control" id="floatingPassword" placeholder="변경할 Password" required/>'
+						   	 			+'&nbsp;&nbsp;<input type="button" id="changePWBtn" class="btn btn-primary" value="확인" >'
 						   	 			+'</div>'
-						   	 			+'<input type="button" id="changePWBtn" class="btn btn-primary" value="확인" >';
+						   	 			+'</div>';
 								$('.changePW').html(control);
 								
 								$(document).on("click",'#changePWBtn',function() {
@@ -768,7 +770,7 @@ $(document).ready(function() {
 						control ='<label for="floatingPhone">Phone</label>'
 							+'<div id="phone-box">'
 							+'<input type="tel" class="form-control" id="inputPhoneNumber" placeholder="숫자만 입력해주세요" required />'
-							+'<input type="button" id="sendPhoneNumber" class="btn btn-primary" value="인증번호 발송">'
+							+'&nbsp;&nbsp;<input type="button" id="sendPhoneNumber" class="btn btn-primary" value="인증번호 발송">'
 							+'</div>';
 						$('.phone-box').html(control);
 					}
