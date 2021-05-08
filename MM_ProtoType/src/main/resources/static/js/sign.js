@@ -315,6 +315,7 @@ $(document).ready(function(){
 		var pw=$("#floatingPassword").val();
 		var phoneNumber = $('#inputPhoneNumber').val();
 		var certify = $('#sendPhoneNumber').val();
+		var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
 
 		var prefer_arr = [];
@@ -323,14 +324,7 @@ $(document).ready(function(){
 			prefer_arr.push(prefer);
 			});
 
-		if(certify != "인증완료"){
-			Swal.fire({
-				title: '핸드폰 인증이 완료되지 않았습니다!',
-				icon: 'warning',
-				showConfirmButton: false,
-			})
-		}
-		else if(name == ""){
+		if(name == ""){
 			//alert("이름 값은 필수 입력입니다.");
 			
 			Swal.fire({
@@ -351,6 +345,32 @@ $(document).ready(function(){
 				  timer: 1500
 			})
 
+		}else if(!regExp.test(id)){
+			//alert("아이디 값은 필수 입력입니다.");
+			
+			Swal.fire({
+				  title: '아이디는 이메일 형식이어야 합니다.',
+				  icon: 'warning',
+				  showConfirmButton: false,
+				  timer: 1500
+			})
+
+		}else if(phoneNumber == ""){
+			//alert("아이디 값은 필수 입력입니다.");
+			
+			Swal.fire({
+				  title: '핸드폰 번호는 필수 입력입니다.',
+				  icon: 'warning',
+				  showConfirmButton: false,
+				  timer: 1500
+			})
+
+		}else if(certify != "인증완료"){
+			Swal.fire({
+				title: '핸드폰 인증이 완료되지 않았습니다!',
+				icon: 'warning',
+				showConfirmButton: false,
+			})
 		}
 		else if(pw == ""){
 			//alert("비밀번호 값은 필수 입력입니다.");
@@ -420,6 +440,9 @@ $(document).ready(function(){
 $(document).ready(function() {
 	$(document).on("click",'#sendPhoneNumber',function() {
 		let phoneNumber = $('#inputPhoneNumber').val();
+		var phoneRegex = /^01(?:0|1|[6-9])(?:\d{4})\d{4}$/;
+		var phoneTest = phoneRegex.test(phoneNumber);
+		
 		var find = "nofind";
 		if ($('#findIDBtn').val() != null){
 			find = "find";
@@ -526,6 +549,9 @@ $(document).ready(function() {
 $(document).ready(function() {
 $(document).on("click",'#sendPhoneNumberRetry',function() {
 	let phoneNumber = $('#inputPhoneNumber').val();
+	var phoneRegex = /^01(?:0|1|[6-9])(?:\d{4})\d{4}$/;
+	var phoneTest = phoneRegex.test(phoneNumber);
+	
 	var find = "nofind";
 	if ($('#findIDBtn').val() != ""){
 		find = "find";
@@ -541,7 +567,14 @@ $(document).on("click",'#sendPhoneNumberRetry',function() {
 			  timer: 1500
 		})
 	}else{
-		
+		if(!phoneTest){
+			Swal.fire({
+				  title: '핸드폰 번호가 형식에 맞지 않습니다.',
+				  icon: 'warning',
+				  showConfirmButton: false,
+				  timer: 1500
+			})
+		}else{
 
 	$.ajax({
 		type : "GET",
@@ -601,6 +634,7 @@ $(document).on("click",'#sendPhoneNumberRetry',function() {
 
 		}
 	})
+	}
 	}
 });
 });
